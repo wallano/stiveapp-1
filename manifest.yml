@@ -1,0 +1,13 @@
+declared-services:
+  pas-mysql:
+    label: cleardb
+    plan: CB5
+applications:
+- name: stiveapp
+  memory: 512M
+  instances: 1
+  host: pasdemo-${random-word}
+  buildpack: java_buildpack
+  path: ./target/stiveapp-0.0.1-SNAPSHOT.jar
+  services:
+    - pas-mysql
